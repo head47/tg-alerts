@@ -12,4 +12,10 @@ A simple Telegram bot to alert its owner on incoming SSH logins.
 # login alerts
 ForceCommand /opt/tg-alerts/login_wrapper.sh
 ```
-5. Done! You will now receive a message when a user logs in via SSH.
+5. Add this to your `/etc/sudoers`:
+```
+# Login alerts
+Defaults!/opt/tg-alerts/login.sh env_keep += "SSH_CLIENT"
+ALL ALL=NOPASSWD: /opt/tg-alerts/login.sh
+```
+6. Done! You will now receive a message when a user logs in via SSH.
